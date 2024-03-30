@@ -1,6 +1,6 @@
-﻿using FactoryMethod;
-using FactoryMethod.Entities;
+﻿using FactoryMethod.Entities;
 using FactoryMethod.Enums;
+using FactoryMethod.Factory;
 using FactoryMethod.Stadium;
 
 Sport sport = new(SportName.Soccer);
