@@ -11,6 +11,7 @@ namespace FactoryMethod.Benchmark;
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 public class FactoriesBenchmark
 {
+    private StadiumFactoryWithOPC _stadiumFactoryWithOPC;
     private Sport[] _sports;
 
     [Params(10, 100, 1000)]
@@ -20,6 +21,7 @@ public class FactoriesBenchmark
     public void Setup()
     {
         _sports = GenerateSports();
+        _stadiumFactoryWithOPC = new StadiumFactoryWithOPC();
     }
 
     [Benchmark]
@@ -34,7 +36,7 @@ public class FactoriesBenchmark
     public IStadium[] FactoryWithOCP()
     {
         return _sports
-            .Select(x => StadiumFactoryWithOPC.Create(x.Name))
+            .Select(x => _stadiumFactoryWithOPC.Create(x.Name))
             .ToArray();
     }
 

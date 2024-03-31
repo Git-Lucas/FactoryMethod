@@ -5,13 +5,13 @@ using FactoryMethod.Stadium;
 using System.Reflection;
 
 namespace FactoryMethod.Factory;
-public static class StadiumFactoryWithOPC
+public class StadiumFactoryWithOPC
 {
-    public static IStadium Create(SportName sportName)
-    {
-        IEnumerable<IStadiumFactory> stadiumFactories = Assembly.GetExecutingAssembly().GetStadiumFactories();
+    private readonly IEnumerable<IStadiumFactory> _stadiumFactories = Assembly.GetExecutingAssembly().GetStadiumFactories();
 
-        IStadium? stadium = stadiumFactories
+    public IStadium Create(SportName sportName)
+    {
+        IStadium? stadium = _stadiumFactories
             .Select(factory => factory.Create(sportName))
             .FirstOrDefault(iStadium => iStadium is not null);
 
