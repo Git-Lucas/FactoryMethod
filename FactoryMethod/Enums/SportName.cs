@@ -2,5 +2,6 @@
 public enum SportName
 {
     Soccer,
-    Basketball
+    Basketball,
+    Tennis
 }
