@@ -5,7 +5,7 @@ using FactoryMethod.Stadium;
 using System.Reflection;
 
 namespace FactoryMethod.Factory;
-public static class StadiumFactory
+public static class StadiumFactoryWithOPC
 {
     public static IStadium Create(SportName sportName)
     {
